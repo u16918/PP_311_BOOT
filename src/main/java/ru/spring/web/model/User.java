@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     private @Id
@@ -15,7 +15,7 @@ public class User {
     @Column(name = "name")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "lastname")
     private String lastName;
 
 

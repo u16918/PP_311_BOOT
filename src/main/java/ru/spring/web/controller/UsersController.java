@@ -31,16 +31,16 @@ public class UsersController {
 	}
 
 	@GetMapping("/{id}/edit")
-	public String edidtUserForm(@PathVariable(value = "id", required = true) long id, Model model,
-								RedirectAttributes attributes) {
-		User user = userService.readUser(id);
+	public String editUserForm(@PathVariable(value = "id", required = true) long id, Model model,
+							   RedirectAttributes attributes) {
+		User user = userService.onUser(id);
 
 		if (null == user) {
 			attributes.addFlashAttribute("flashMessage", "User are not exists!");
 			return "redirect:/users";
 		}
 
-		model.addAttribute("user", userService.readUser(id));
+		model.addAttribute("user", userService.onUser(id));
 		return "form";
 	}
 
@@ -51,7 +51,7 @@ public class UsersController {
 			return "form";
 		}
 
-		userService.createOrUpdateUser(user);
+		userService.createOrUpdate(user);
 		attributes.addFlashAttribute("flashMessage",
 				"User " + user.getFirstName() + " successfully created!");
 		return "redirect:/users";

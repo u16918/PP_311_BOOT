@@ -18,25 +18,25 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void createUser(User user) {
+    public void create(User user) {
         entityManager.persist(user);
         entityManager.flush();
     }
 
     @Override
-    public void updateUser(User user) {
+    public void update(User user) {
         entityManager.merge(user);
         entityManager.flush();
     }
 
     @Override
-    public User readUser(long id) {
+    public User onUser(long id) {
         return entityManager.find(User.class, id);
     }
 
     @Override
-    public User deleteUser(long id) throws NullPointerException {
-        User user = readUser(id);
+    public User delete(long id) throws NullPointerException {
+        User user = onUser(id);
         if (null == user) {
             throw new NullPointerException("User not found");
         }
